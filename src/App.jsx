@@ -93,7 +93,7 @@ const projectsData = [
     image: "/ttt.png",
     technologies: ["React", "Node.js", "StreamChat", "Express.JS"],
     sourceCode: "https://github.com/ImComy/online-special-ttt",
-    liveDemo: "https://online-special-ttt.vercel.app/",
+    liveDemo: "https://ttt-secert-tjbp.vercel.app/",
     date: "2024-08-01 to 2024-09-01",
   },
   {
@@ -226,10 +226,10 @@ function App() {
             >
               <h3 className="text-2xl font-semibold mb-6 text-primary">Dedicated Software Engineer</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                I’m passionate about building things that actually work and make people’s lives easier. I enjoy working with others, learning from different perspectives, and tackling problems head-on. When I hit a challenge, I like to dig in, figure out what’s really going on, and find the best solution — not just a quick fix.
               </p>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                I’m organized and like to keep my work on track, making sure I meet deadlines while keeping quality high. I’m always curious about new tools and ways to improve, and I’m excited to join a team where I can grow and contribute in a meaningful way.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                 <div className="flex items-center"><MapPin className="w-5 h-5 text-primary mr-3" /> <span className="text-foreground">Egypt / Remote</span></div>

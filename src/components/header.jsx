@@ -104,9 +104,9 @@ const Home = () => {
             variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
             className="text-muted-foreground text-base md:text-lg leading-relaxed"
           >
-           loerm ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam,
-           quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+           I'm a driven MERN Stack Developer and a Computer Science student, passionate about building cutting
+edge web applications that deliver great user experiences. With over a year of dedicated learning in web 
+development, I've honed my skills in crafting innovative solutions that exceed user expectations.
           </motion.p>
 
           <motion.div

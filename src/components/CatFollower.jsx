@@ -83,7 +83,7 @@ return (
   <>
     {targetPosition && (
       <motion.div
-        className="ball absolute z-40 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center cursor-pointer"
+        className="ball absolute z-40 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center cursor-pointer  hidden sm:block"
         style={{
           left: targetPosition.x,
           top: targetPosition.y,

@@ -14,7 +14,7 @@ const AboutJSON = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bg-[#0d1117] text-[#c9d1d9] font-mono text-sm p-4 pt-10 rounded-2xl shadow-2xl w-full max-w-5xl mx-auto relative h-full"
+      className=" bg-[#0d1117] text-[#c9d1d9] font-mono text-sm p-4 pt-10 rounded-2xl shadow-2xl w-full max-w-5xl mx-auto relative h-full"
     >
       {/* Mac-style window controls */}
       <div className="absolute top-3 left-4 flex gap-2">
@@ -28,7 +28,7 @@ const AboutJSON = () => {
         <GrArchlinux />
       </div>
 
-      <div className="text-left overflow-x-auto">
+      <div className="text-left overflow-x-auto pb-3 sm:pb-0">
         <JsonLine>{`{`}</JsonLine>
         <JsonLine indent={1}>
           <span className="text-blue-400">"name"</span>: <span className="text-green-400">"Ahmed"</span>,
