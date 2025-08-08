@@ -226,10 +226,10 @@ function App() {
             >
               <h3 className="text-2xl font-semibold mb-6 text-primary">Dedicated Software Engineer</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                I’m passionate about building things that actually work and make people’s lives easier. I enjoy working with others, learning from different perspectives, and tackling problems head-on. When I hit a challenge, I like to dig in, figure out what’s really going on, and find the best solution — not just a quick fix.
+                I love building practical, reliable things that genuinely make life easier. I'm someone who enjoys working collaboratively, learning from different points of view, and facing challenges directly. When something doesn’t work, I like digging into the problem to understand it fully and come up with a real, lasting solution; not just a patch.
               </p>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                I’m organized and like to keep my work on track, making sure I meet deadlines while keeping quality high. I’m always curious about new tools and ways to improve, and I’m excited to join a team where I can grow and contribute in a meaningful way.
+                I stay organized, value clear communication, and take pride in meeting deadlines without cutting corners. I'm always exploring new tools and techniques to improve my work, and I'm excited to be part of a team where I can keep growing while making a real impact.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                 <div className="flex items-center"><MapPin className="w-5 h-5 text-primary mr-3" /> <span className="text-foreground">Egypt / Remote</span></div>

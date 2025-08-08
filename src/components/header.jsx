@@ -104,9 +104,7 @@ const Home = () => {
             variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
             className="text-muted-foreground text-base md:text-lg leading-relaxed"
           >
-           I'm a driven MERN Stack Developer and a Computer Science student, passionate about building cutting
-edge web applications that deliver great user experiences. With over a year of dedicated learning in web 
-development, I've honed my skills in crafting innovative solutions that exceed user expectations.
+I'm a Computer Science student at Suez Canal University and a MERN stack developer with a strong focus on building modern, user-friendly web applications. Over the past year, I've been deeply immersed in web development ⇒ learning, experimenting, and building real projects. I enjoy creating clean, responsive interfaces and solving problems with smart, practical solutions!
           </motion.p>
 
           <motion.div
