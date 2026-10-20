@@ -16,6 +16,11 @@ module.exports = {
 			},
 		},
 		extend: {
+			fontFamily: {
+				sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+				heading: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+				mono: ['"JetBrains Mono"', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
