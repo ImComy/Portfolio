@@ -180,9 +180,12 @@ export default function TechMarquee() {
   return (
     <div className="w-full text-left select-none">
       <div className="flex items-center justify-between px-1 pb-2">
-        <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold flex items-center gap-1.5">
-          <span>Tools & Daily Drivers</span>
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-amber-500 font-bold text-xs select-none">—</span>
+          <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+            TOOLS & DAILY DRIVERS
+          </span>
+        </div>
         <div className="flex items-center gap-3">
           <span className="text-[11px] font-mono text-muted-foreground/80 flex items-center gap-1.5">
             {isHovered ? (

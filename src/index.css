@@ -3,25 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --background: 222 35% 8%; 
-  --foreground: 215 25% 95%; 
-  --card: 222 28% 12%; 
-  --card-foreground: 215 25% 95%;
-  --popover: 222 28% 12%;
-  --popover-foreground: 215 25% 95%;
-  --primary: 16 95% 62%; 
-  --primary-foreground: 0 0% 100%;
-  --secondary: 222 20% 18%;
+  --background: 220 28% 6%;
+  --foreground: 215 25% 96%;
+  --card: 220 24% 9.5%;
+  --card-foreground: 215 25% 96%;
+  --popover: 220 24% 9.5%;
+  --popover-foreground: 215 25% 96%;
+  --primary: 38 92% 50%;
+  --primary-foreground: 220 30% 6%;
+  --secondary: 220 20% 14%;
   --secondary-foreground: 215 25% 92%;
-  --muted: 222 20% 16%;
-  --muted-foreground: 215 15% 65%;
-  --accent: 38 95% 55%; 
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 75% 58%; 
+  --muted: 220 18% 13%;
+  --muted-foreground: 215 16% 68%;
+  --accent: 38 92% 50%;
+  --accent-foreground: 220 30% 6%;
+  --destructive: 0 75% 58%;
   --destructive-foreground: 0 0% 100%;
-  --border: 222 20% 20%; 
-  --input: 222 20% 20%;
-  --ring: 16 95% 62%;
+  --border: 220 18% 16%;
+  --input: 220 18% 16%;
+  --ring: 38 92% 50%;
   --radius: 0.75rem;
 }
 
@@ -32,7 +32,7 @@ html {
 
 body {
   color: hsl(var(--foreground));
-  background: hsl(var(--background)); 
+  background: hsl(var(--background));
   font-feature-settings: "rlig" 1, "calt" 1;
   overflow-x: clip;
   min-height: 100vh;
@@ -66,7 +66,7 @@ body {
 
 /* Subtle line grid pattern */
 .bg-line-grid {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
@@ -74,16 +74,16 @@ body {
 
 /* Card aesthetics */
 .craft-card {
-  background: linear-gradient(180deg, rgba(25, 33, 48, 0.75) 0%, rgba(18, 24, 36, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(20, 26, 38, 0.8) 0%, rgba(14, 18, 27, 0.9) 100%);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .craft-card:hover {
-  border-color: rgba(255, 107, 74, 0.35);
-  box-shadow: 0 20px 40px -15px rgba(255, 107, 74, 0.15);
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.12);
   transform: translateY(-2px);
 }
 
@@ -108,20 +108,52 @@ body {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.2s ease;
 }
 
 .badge-pill:hover {
   border-color: hsl(var(--primary));
-  background: rgba(255, 107, 74, 0.1);
+  background: rgba(245, 158, 11, 0.1);
   color: #fff;
+}
+
+/* Craftsman Eyebrow Tag */
+.craftsman-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #f59e0b;
+}
+
+.craftsman-eyebrow::before {
+  content: "—";
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+/* Craftsman Quote Callout (matching Image 2) */
+.craftsman-quote {
+  border-left: 2px solid #f59e0b;
+  padding-left: 1.25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-family: 'Newsreader', 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #f59e0b;
 }
 
 /* Warm text gradient */
 .text-warm-gradient {
-  background: linear-gradient(135deg, #FF6B4A 0%, #FFAE33 50%, #FFD166 100%);
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fde68a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -133,9 +165,11 @@ body {
     background: white !important;
     color: black !important;
   }
+
   .no-print {
     display: none !important;
   }
+
   .print-only {
     display: block !important;
   }

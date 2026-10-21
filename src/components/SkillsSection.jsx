@@ -92,18 +92,19 @@ export default function SkillsSection() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-white/10 pb-3">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className="badge-pill text-xs font-mono text-primary">
-              <Code2 className="w-3.5 h-3.5" /> Core Stack
+            <span className="text-amber-500 font-bold text-xs select-none">—</span>
+            <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+              TECHNICAL FOUNDATIONS
             </span>
-            <span className="text-xs font-mono text-muted-foreground">
-              4 Disciplines
+            <span className="text-xs font-mono text-slate-400">
+              · 4 Disciplines
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-heading font-bold text-foreground">
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
             Technical Skills & Architecture
           </h2>
         </div>
-        <p className="text-xs text-muted-foreground font-mono">
+        <p className="text-xs text-slate-400 font-mono">
           Coursework, ITI bootcamp & production experience.
         </p>
       </div>

@@ -59,7 +59,7 @@ export default function Navbar() {
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-card" />
             </div>
 
-            <span className="text-sm sm:text-base font-heading font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
+            <span className="text-sm sm:text-base font-serif font-bold text-white tracking-tight group-hover:text-amber-400 transition-colors">
               Ahmed El-Shazly
             </span>
           </Link>
@@ -72,8 +72,8 @@ export default function Navbar() {
                 to={item.path}
                 className={({ isActive }) =>
                   `px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${isActive
-                    ? 'bg-primary text-primary-foreground font-semibold shadow-sm'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
+                    ? 'bg-amber-500 text-slate-950 font-semibold shadow-sm'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
                   }`
                 }
               >

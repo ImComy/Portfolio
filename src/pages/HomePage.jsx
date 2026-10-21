@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -8,13 +8,15 @@ import {
   Github,
   Linkedin,
   Mail,
-  Sparkles,
-  Download,
-  GraduationCap,
-  Award,
-  ShieldCheck,
+  FileText,
+  Check,
+  Calendar,
   Building,
-  Calendar
+  ShieldCheck,
+  Sparkles,
+  Dumbbell,
+  Terminal,
+  Cpu
 } from 'lucide-react';
 import { FaDiscord, FaInstagram, FaFacebook } from 'react-icons/fa';
 import { projects } from '../data/projects';
@@ -23,99 +25,166 @@ import confetti from 'canvas-confetti';
 import TechMarquee from '../components/TechMarquee';
 import SkillsSection from '../components/SkillsSection';
 import AcademicTimeline from '../components/AcademicTimeline';
-
-const floatingSocials = [
-  {
-    Icon: Github,
-    href: 'https://github.com/ImComy',
-    label: 'GitHub',
-    // 10 o'clock position
-    positionClass: 'top-1 left-2 sm:top-2 sm:left-3',
-    delay: 0
-  },
-  {
-    Icon: Linkedin,
-    href: 'https://www.linkedin.com/in/ahmedelshazly74/',
-    label: 'LinkedIn',
-    // 2 o'clock position
-    positionClass: 'top-1 right-2 sm:top-2 sm:right-3',
-    delay: 0.2
-  },
-  {
-    Icon: Mail,
-    href: 'mailto:ahmedcomy74@gmail.com',
-    label: 'Email',
-    // 9 o'clock position
-    positionClass: 'top-1/2 -left-3 sm:-left-4 -translate-y-1/2',
-    delay: 0.4
-  },
-  {
-    Icon: FaDiscord,
-    href: 'https://discord.com/users/713394083179135026',
-    label: 'Discord',
-    // 3 o'clock position
-    positionClass: 'top-1/2 -right-3 sm:-right-4 -translate-y-1/2',
-    delay: 0.6
-  },
-  {
-    Icon: FaInstagram,
-    href: 'https://www.instagram.com/im_comy',
-    label: 'Instagram',
-    // 8 o'clock position
-    positionClass: 'bottom-1 left-3 sm:bottom-2 sm:left-4',
-    delay: 0.8
-  },
-  {
-    Icon: FaFacebook,
-    href: 'https://www.facebook.com/ImComy',
-    label: 'Facebook',
-    // 4 o'clock position
-    positionClass: 'bottom-1 right-3 sm:bottom-2 sm:right-4',
-    delay: 1.0
-  }
-];
+import ImpactSolutionsSection from '../components/ImpactSolutionsSection';
+import ExperienceTimeline from '../components/ExperienceTimeline';
 
 export default function HomePage() {
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const featuredProjects = projects.filter((p) => p.featured);
   const selectedCertifications = [
     certifications.find((c) => c.id === 'iti-frontend') || certifications[0],
     certifications.find((c) => c.id === 'fullstack-rest-api') || certifications[2]
   ];
 
-  const handleDownloadCV = () => {
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('ahmedcomy74@gmail.com');
+    setCopiedEmail(true);
     confetti({
-      particleCount: 50,
-      spread: 60,
-      origin: { y: 0.6 }
+      particleCount: 35,
+      spread: 50,
+      origin: { y: 0.7 }
     });
+    setTimeout(() => setCopiedEmail(false), 2200);
   };
 
   const scrollToContent = () => {
-    const el = document.getElementById('featured-work');
+    const el = document.getElementById('craftsman-philosophy');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <div className="space-y-20 sm:space-y-24 text-left">
-      {/* Full-Screen Hero Section */}
-      <section className="min-h-[calc(100vh-6rem)] flex flex-col justify-between pt-6 pb-6 max-w-5xl mx-auto relative">
+    <div className="space-y-24 sm:space-y-28 text-left pb-16">
+      {/* ========================================================= */}
+      {/* HERO SECTION (Faithfully styled after Image 1)            */}
+      {/* ========================================================= */}
+      <section className="min-h-[calc(100vh-7rem)] flex flex-col justify-between pt-4 sm:pt-8 pb-4 max-w-5xl mx-auto relative">
         <div className="flex-1 flex flex-col justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-14 items-center">
-            {/* Left: Circular Avatar with Floating Orbital Social Icons */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Main Hero Copy - Image 1 exact layout & styling */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="md:col-span-5 flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55 }}
+              className="lg:col-span-8 space-y-6"
             >
-              <div className="relative w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center">
-                {/* Subtle orbital guideline ring */}
-                <div className="absolute inset-2 sm:inset-3 rounded-full border border-dashed border-white/15 pointer-events-none" />
+              {/* Top Eyebrow Tag */}
+              <div className="flex items-center gap-2">
+                <span className="text-amber-500 font-bold text-sm sm:text-base select-none">—</span>
+                <span className="text-xs sm:text-sm font-mono font-semibold tracking-[0.16em] sm:tracking-[0.2em] text-amber-500 uppercase">
+                  CS STUDENT · SUEZ CANAL UNIV · ITI BOOTCAMP
+                </span>
+              </div>
 
-                {/* Circular Profile Avatar */}
-                <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-primary/60 shadow-[0_0_35px_rgba(255,107,74,0.3)] bg-card group">
+              {/* Main Headline with Serif Typography */}
+              <h1 className="text-4xl sm:text-6xl lg:text-[4.25rem] font-serif font-black text-white tracking-tight leading-[1.08] text-balance">
+                Hey, I'm Ahmed.<br />
+                I build<br />
+                <span className="text-amber-500 underline decoration-amber-600/70 decoration-[3px] underline-offset-8">
+                  stuff that works.
+                </span>
+              </h1>
+
+              {/* Body Paragraph with Strategic White Bold Highlights */}
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans max-w-2xl">
+                CS student at <strong className="text-white font-semibold">Suez Canal University</strong> (Class of 2027) & ITI scholarship graduate. I lift heavy things at the gym and write full-stack MERN code that <strong className="text-white font-semibold">doesn't fall apart at 2 AM</strong>. This is my workshop — part portfolio, part arcade, part engineering workbench.
+              </p>
+
+              {/* Action Buttons Row */}
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                {/* Primary Button */}
+                <a
+                  href="#featured-work"
+                  className="btn-tactile inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-lg shadow-amber-500/20 transition-all cursor-pointer"
+                >
+                  <span>Explore the Workshop</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </a>
+
+                {/* Secondary Button */}
+                <Link
+                  to="/cv"
+                  className="btn-tactile inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/80 hover:border-slate-500 text-slate-200 transition-all"
+                >
+                  <FileText className="w-4 h-4 text-amber-500" />
+                  <span>View CV & Spec</span>
+                </Link>
+
+                {/* Tertiary Button (Copy Email) */}
+                <button
+                  onClick={handleCopyEmail}
+                  className="btn-tactile inline-flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/80 hover:border-slate-500 text-slate-200 transition-all cursor-pointer"
+                  title="Copy email address to clipboard"
+                >
+                  {copiedEmail ? (
+                    <>
+                      <Check className="w-4 h-4 text-emerald-400 stroke-[2.5]" />
+                      <span className="text-emerald-400 font-semibold">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Mail className="w-4 h-4 text-slate-400" />
+                      <span>Copy Email</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Links Line Underneath */}
+              <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono text-slate-400">
+                <span className="text-slate-500 font-semibold tracking-wider">LINKS:</span>
+                <a
+                  href="https://github.com/ImComy"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-400 transition-colors"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GitHub</span>
+                </a>
+                <span className="text-slate-700 select-none">/</span>
+                <a
+                  href="https://www.linkedin.com/in/ahmedelshazly74/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-400 transition-colors"
+                >
+                  <Linkedin className="w-3.5 h-3.5" />
+                  <span>LinkedIn</span>
+                </a>
+                <span className="text-slate-700 select-none">/</span>
+                <a
+                  href="https://discord.com/users/713394083179135026"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-slate-300 hover:text-amber-400 transition-colors"
+                >
+                  <FaDiscord className="w-3.5 h-3.5" />
+                  <span>Discord</span>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Right: Refined Craftsman Avatar Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="lg:col-span-4 flex justify-center lg:justify-end"
+            >
+              <div className="relative w-full max-w-[280px] sm:max-w-[310px] craft-card rounded-2xl p-5 border border-white/10 space-y-4">
+                {/* Header status indicator */}
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="inline-flex items-center gap-1.5 text-emerald-400">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Available for Work
+                  </span>
+                  <span className="text-slate-500">2023 — 2027</span>
+                </div>
+
+                {/* Profile Image with subtle gold ring */}
+                <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-900 border border-white/10 group">
                   <img
                     src="/pfp.png"
                     alt="Ahmed El-Shazly"
@@ -124,124 +193,70 @@ export default function HomePage() {
                       e.target.style.display = 'none';
                     }}
                   />
-                  <div className="absolute inset-0 rounded-full border border-white/15 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 right-3 text-left">
+                    <p className="text-sm font-serif font-bold text-white">Ahmed El-Shazly</p>
+                    <p className="text-[11px] font-mono text-amber-400">@ImComy · Full-Stack</p>
+                  </div>
                 </div>
 
-                {/* Floating Orbital Social Icons */}
-                {floatingSocials.map(({ Icon, href, label, positionClass, delay }) => (
-                  <motion.a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    animate={{
-                      y: [-3, 3, -3]
-                    }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 3,
-                      ease: 'easeInOut',
-                      delay: delay
-                    }}
-                    whileHover={{ scale: 1.25, rotate: 6 }}
-                    whileTap={{ scale: 0.9 }}
-                    className={`absolute ${positionClass} p-2.5 sm:p-3 rounded-full bg-card/90 backdrop-blur-md border border-white/20 hover:border-primary text-muted-foreground hover:text-primary transition-colors shadow-xl z-20`}
-                    aria-label={label}
-                    title={label}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Right: Intro & Headlines */}
-            <motion.div
-              initial={{ opacity: 0, x: 25 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="md:col-span-7 space-y-5 text-center md:text-left"
-            >
-              <div className="space-y-2">
-                <h1 className="text-4xl sm:text-6xl font-heading font-bold text-foreground tracking-tight leading-[1.1]">
-                  Hi, I’m <span className="text-warm-gradient">Ahmed El-Shazly</span>
-                </h1>
-                <p className="text-lg sm:text-xl font-mono text-primary font-medium">
-                  Full-Stack Software Engineer
-                </p>
-              </div>
-
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto md:mx-0">
-                Computer Science student at Suez Canal University (Class of 2027) & ITI bootcamp graduate. I engineer modern web applications, real-time mechanics, and responsive interfaces with React, Next.js, TypeScript, and Node.js.
-              </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
-                <Link
-                  to="/showcase"
-                  className="btn-tactile inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 transition-all"
-                >
-                  <span>Explore Showcase</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-
-                <a
-                  href="/Ahmed-CV.pdf"
-                  download="Ahmed-El-Shazly-CV.pdf"
-                  onClick={handleDownloadCV}
-                  className="btn-tactile inline-flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-white/5 hover:bg-white/10 border border-white/10 text-foreground transition-all"
-                >
-                  <Download className="w-4 h-4 text-primary" />
-                  <span>Download CV</span>
-                </a>
-
-                <Link
-                  to="/about"
-                  className="btn-tactile inline-flex items-center gap-2 px-4 py-3 rounded-xl text-xs sm:text-sm font-mono text-muted-foreground hover:text-foreground hover:bg-white/5 transition-all"
-                >
-                  <span>About Me</span>
-                </Link>
+                {/* Quick specs / attributes */}
+                <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-slate-400 pt-1">
+                  <div className="p-2 rounded-lg bg-white/5 border border-white/5">
+                    <span className="text-slate-500 block text-[10px]">FOCUS</span>
+                    <span className="text-slate-200 font-semibold">MERN + Next.js</span>
+                  </div>
+                  <div className="p-2 rounded-lg bg-white/5 border border-white/5">
+                    <span className="text-slate-500 block text-[10px]">CAMPUS</span>
+                    <span className="text-slate-200 font-semibold">Suez Canal Univ</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
 
         {/* Scroll Down Indicator */}
-        <div className="pt-6 pb-2 flex flex-col items-center justify-center">
+        <div className="pt-8 pb-2 flex flex-col items-center justify-center">
           <button
             onClick={scrollToContent}
-            className="group flex flex-col items-center gap-2 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            aria-label="Scroll down to featured work"
+            className="group flex flex-col items-center gap-2 text-xs font-mono text-slate-500 hover:text-slate-300 transition-colors cursor-pointer"
+            aria-label="Scroll down to craftsman philosophy"
           >
-            <span className="tracking-wider uppercase text-[11px]">Scroll Down</span>
+            <span className="tracking-widest uppercase text-[10px]">Philosophy & Code</span>
             <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-              className="p-2 rounded-full bg-white/5 group-hover:bg-white/10 border border-white/10 text-primary transition-colors"
+              animate={{ y: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+              className="p-2 rounded-full bg-slate-900/80 group-hover:bg-slate-800 border border-slate-800 text-amber-500 transition-colors"
             >
-              <ArrowDown className="w-4 h-4" />
+              <ArrowDown className="w-3.5 h-3.5" />
             </motion.div>
           </button>
         </div>
       </section>
 
-      {/* Featured Works Showcase */}
-      <section id="featured-work" className="space-y-8 max-w-5xl mx-auto pt-4">
+      {/* ========================================================= */}
+      {/* FEATURED WORKS SHOWCASE                                    */}
+      {/* ========================================================= */}
+      <section id="featured-work" className="space-y-8 max-w-5xl mx-auto pt-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-4">
           <div className="space-y-1">
-            <span className="badge-pill text-xs font-mono text-primary">
-              <Sparkles className="w-3.5 h-3.5" /> Selected Works
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
+            <div className="flex items-center gap-2">
+              <span className="text-amber-500 font-bold text-xs sm:text-sm select-none">—</span>
+              <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+                SELECTED WORKS
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight">
               Featured Projects
             </h2>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs sm:text-sm text-slate-400">
               Deep-dive case studies covering architecture, challenges, and live applications.
             </p>
           </div>
           <Link
             to="/showcase"
-            className="text-xs font-mono text-primary hover:underline flex items-center gap-1 group"
+            className="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1 group transition-colors"
           >
             <span>Browse all showcase</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -260,7 +275,7 @@ export default function HomePage() {
             >
               <div className="space-y-4">
                 {/* Image preview with tag overlay */}
-                <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-muted/30 border border-white/5">
+                <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-slate-950 border border-white/5">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -270,7 +285,7 @@ export default function HomePage() {
                     }}
                   />
                   <div className="absolute top-2.5 left-2.5">
-                    <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-black/70 backdrop-blur-md text-white border border-white/10">
+                    <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-black/75 backdrop-blur-md text-amber-400 border border-white/10">
                       {project.category}
                     </span>
                   </div>
@@ -278,11 +293,11 @@ export default function HomePage() {
 
                 {/* Title & Tagline */}
                 <div>
-                  <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors flex items-center justify-between">
+                  <h3 className="text-lg font-serif font-bold text-white group-hover:text-amber-400 transition-colors flex items-center justify-between">
                     <span>{project.title}</span>
-                    <span className="text-xs font-mono text-muted-foreground">{project.year}</span>
+                    <span className="text-xs font-mono text-slate-500 font-normal">{project.year}</span>
                   </h3>
-                  <p className="text-xs text-muted-foreground mt-1 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-slate-400 mt-1.5 line-clamp-2 leading-relaxed">
                     {project.summary}
                   </p>
                 </div>
@@ -292,13 +307,13 @@ export default function HomePage() {
                   {project.technologies.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-white/5 text-muted-foreground border border-white/5"
+                      className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-white/5 text-slate-300 border border-white/5"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 4 && (
-                    <span className="px-1.5 py-0.5 rounded-md text-[10px] font-mono bg-white/5 text-muted-foreground">
+                    <span className="px-1.5 py-0.5 rounded-md text-[10px] font-mono bg-white/5 text-slate-400">
                       +{project.technologies.length - 4}
                     </span>
                   )}
@@ -309,7 +324,7 @@ export default function HomePage() {
               <div className="pt-3 border-t border-white/5 flex items-center justify-between">
                 <Link
                   to={`/projects/${project.slug}`}
-                  className="text-xs font-semibold text-primary hover:text-primary/80 flex items-center gap-1.5 py-1"
+                  className="text-xs font-semibold text-amber-500 hover:text-amber-400 flex items-center gap-1.5 py-1 transition-colors"
                 >
                   <span>Read Case Study</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -321,7 +336,7 @@ export default function HomePage() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
                       title="GitHub Source"
                     >
                       <Github className="w-4 h-4" />
@@ -332,7 +347,7 @@ export default function HomePage() {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                      className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
                       title="Live Demo"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -345,31 +360,67 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tools & Daily Drivers Marquee (Placed directly beneath Featured Projects with tight margins) */}
+      {/* ========================================================= */}
+      {/* TOOLS & DAILY DRIVERS MARQUEE                             */}
+      {/* ========================================================= */}
       <section className="max-w-5xl mx-auto -mt-4 sm:-mt-6">
         <TechMarquee />
       </section>
 
-      {/* Comprehensive Acquired Skills & Technologies Section */}
+      {/* ========================================================= */}
+      {/* ACQUIRED SKILLS & TECHNOLOGIES                            */}
+      {/* ========================================================= */}
       <SkillsSection />
 
-      {/* Selected Certifications Section */}
+      {/* ========================================================= */}
+      {/* IMPACT & ARCHITECTURAL SOLUTIONS                          */}
+      {/* ========================================================= */}
+      <ImpactSolutionsSection />
+
+      {/* ========================================================= */}
+      {/* WORK EXPERIENCE & APPLIED ENGINEERING TIMELINE           */}
+      {/* ========================================================= */}
+      <section className="space-y-8 max-w-5xl mx-auto pt-4">
+        <div className="border-b border-white/10 pb-4">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-amber-500 font-bold text-xs sm:text-sm select-none">—</span>
+            <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+              WORK EXPERIENCE & COLLABORATION
+            </span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight">
+            Where & How I’ve Worked
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl leading-relaxed">
+            Collaborative agile pods, independent client contracts, academic project leadership, and systems development.
+          </p>
+        </div>
+
+        <ExperienceTimeline />
+      </section>
+
+      {/* ========================================================= */}
+      {/* SELECTED CERTIFICATIONS                                   */}
+      {/* ========================================================= */}
       <section className="space-y-8 max-w-5xl mx-auto pt-2">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-4">
           <div className="space-y-1">
-            <span className="badge-pill text-xs font-mono text-emerald-400">
-              <Award className="w-3.5 h-3.5" /> Accreditations
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
+            <div className="flex items-center gap-2">
+              <span className="text-amber-500 font-bold text-xs sm:text-sm select-none">—</span>
+              <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+                ACCREDITATIONS
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight">
               Selected Certifications
             </h2>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs sm:text-sm text-slate-400">
               Bootcamp specializations and validated technical competencies.
             </p>
           </div>
           <Link
             to="/showcase"
-            className="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1 group"
+            className="text-xs font-mono text-amber-400 hover:text-amber-300 flex items-center gap-1 group transition-colors"
           >
             <span>View all in Showcase</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -384,29 +435,29 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="craft-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-white/10 p-6 space-y-5 hover:border-emerald-500/40 transition-all"
+              className="craft-card rounded-2xl flex flex-col justify-between overflow-hidden group border border-white/10 p-6 space-y-5 hover:border-amber-500/40 transition-all"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center gap-1.5">
                     <ShieldCheck className="w-3.5 h-3.5" /> {cert.status}
                   </span>
-                  <span className="text-xs font-mono text-muted-foreground flex items-center gap-1">
+                  <span className="text-xs font-mono text-slate-500 flex items-center gap-1">
                     <Calendar className="w-3 h-3" /> {cert.issueDate}
                   </span>
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-white group-hover:text-amber-400 transition-colors">
                     {cert.title}
                   </h3>
-                  <p className="text-xs font-mono text-muted-foreground flex items-center gap-1.5">
-                    <Building className="w-3.5 h-3.5 text-primary" />
+                  <p className="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+                    <Building className="w-3.5 h-3.5 text-amber-500" />
                     <span>{cert.issuer}</span>
                   </p>
                 </div>
 
-                <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                <p className="text-xs text-slate-400 leading-relaxed line-clamp-2">
                   {cert.description}
                 </p>
 
@@ -414,7 +465,7 @@ export default function HomePage() {
                   {cert.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-white/5 text-muted-foreground border border-white/5"
+                      className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-white/5 text-slate-300 border border-white/5"
                     >
                       {skill}
                     </span>
@@ -425,7 +476,7 @@ export default function HomePage() {
               <div className="pt-4 border-t border-white/5 flex items-center justify-between">
                 <Link
                   to={`/certifications/${cert.slug}`}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors"
                 >
                   <span>View Credential Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -436,7 +487,7 @@ export default function HomePage() {
                     href={cert.verifyUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                    className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
                     title="Verify Issuer"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -448,43 +499,57 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Academic Journey Timeline */}
+      {/* ========================================================= */}
+      {/* ACADEMIC JOURNEY TIMELINE                                 */}
+      {/* ========================================================= */}
       <section className="space-y-8 max-w-5xl mx-auto">
         <div className="border-b border-white/10 pb-4">
-          <span className="badge-pill text-xs font-mono text-primary mb-2">
-            <GraduationCap className="w-3.5 h-3.5" /> Education
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
-            Academic Journey
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-amber-500 font-bold text-xs sm:text-sm select-none">—</span>
+            <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+              ACADEMIC JOURNEY
+            </span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight">
+            Academic & Bootcamp Foundation
           </h2>
-          <p className="text-xs text-muted-foreground mt-1">
-            Computer science degree and professional development path.
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+            Computer science degree and professional development path at Suez Canal University & ITI.
           </p>
         </div>
 
         <AcademicTimeline />
       </section>
 
-      {/* Connect Banner */}
+      {/* ========================================================= */}
+      {/* CONNECT BANNER                                            */}
+      {/* ========================================================= */}
       <section className="craft-card rounded-2xl p-8 sm:p-10 border border-white/10 text-center space-y-4 max-w-4xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
-          Let’s build something together.
+        <div className="flex items-center justify-center gap-2">
+          <span className="text-amber-500 font-bold text-xs sm:text-sm select-none">—</span>
+          <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+            GET IN TOUCH
+          </span>
+        </div>
+        <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight">
+          Let’s build something that works.
         </h2>
-        <p className="text-sm text-muted-foreground max-w-lg mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-300 max-w-lg mx-auto leading-relaxed">
           Open to full-stack engineering opportunities, internships, and collaborative software projects.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
           <a
             href="mailto:ahmedcomy74@gmail.com"
-            className="btn-tactile inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-semibold shadow-lg shadow-primary/20"
+            className="btn-tactile inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-semibold shadow-lg shadow-amber-500/20"
           >
             <Mail className="w-4 h-4" />
             <span>Send Email</span>
           </a>
           <Link
             to="/cv"
-            className="btn-tactile inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-foreground text-xs font-semibold"
+            className="btn-tactile inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-white text-sm font-semibold"
           >
+            <FileText className="w-4 h-4 text-amber-500" />
             <span>View Full CV & Spec</span>
           </Link>
         </div>

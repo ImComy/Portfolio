@@ -46,18 +46,21 @@ export default function ProjectDetailPage() {
       {/* Hero Header */}
       <header className="space-y-4 border-b border-white/10 pb-8 text-left">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="badge-pill text-xs font-mono text-primary">
-            {project.category}
-          </span>
-          <span className="badge-pill text-xs font-mono text-muted-foreground">
+          <div className="flex items-center gap-1.5">
+            <span className="text-amber-500 font-bold text-xs select-none">—</span>
+            <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+              {project.category}
+            </span>
+          </div>
+          <span className="text-xs font-mono text-slate-400 px-2 py-0.5 rounded bg-white/5 border border-white/5">
             Status: {project.status}
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-heading font-bold text-foreground leading-tight">
+        <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white leading-tight">
           {project.title}
         </h1>
-        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-sans">
           {project.tagline}
         </p>
 
@@ -67,7 +70,7 @@ export default function ProjectDetailPage() {
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 text-foreground border border-white/10"
+                className="px-2.5 py-1 rounded-lg text-xs font-mono bg-white/5 text-slate-200 border border-white/10"
               >
                 {tech}
               </span>
@@ -80,7 +83,7 @@ export default function ProjectDetailPage() {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-tactile inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/10 text-foreground transition-all"
+                className="btn-tactile inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 transition-all"
               >
                 <Github className="w-4 h-4" />
                 <span>Source Code</span>
@@ -91,7 +94,7 @@ export default function ProjectDetailPage() {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-tactile inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm transition-all"
+                className="btn-tactile inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm transition-all"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>Live Demo</span>
@@ -110,7 +113,7 @@ export default function ProjectDetailPage() {
 
       {/* Main Visual Showcase */}
       <section className="space-y-3">
-        <div className="rounded-2xl overflow-hidden border border-white/10 bg-muted/20 shadow-2xl">
+        <div className="rounded-2xl overflow-hidden border border-white/10 bg-slate-950 shadow-2xl">
           <img
             src={project.image}
             alt={project.title}
@@ -120,25 +123,37 @@ export default function ProjectDetailPage() {
             }}
           />
         </div>
-        <p className="text-center text-xs font-mono text-muted-foreground">
+        <p className="text-center text-xs font-mono text-slate-500">
           Visual interface preview of {project.title}
         </p>
       </section>
 
       {/* Why Built Section */}
       <section className="craft-card rounded-2xl p-6 sm:p-8 border border-white/10 space-y-4 text-left">
-        <h2 className="text-xl font-heading font-bold text-foreground flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-primary" /> Why I Built This
+        <div className="flex items-center gap-2">
+          <span className="text-amber-500 font-bold text-xs select-none">—</span>
+          <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+            RATIONALE
+          </span>
+        </div>
+        <h2 className="text-xl sm:text-2xl font-serif font-bold text-white flex items-center gap-2">
+          <Sparkles className="w-4 h-4 text-amber-500" /> Why I Built This
         </h2>
-        <p className="text-sm text-muted-foreground leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
           {project.whyBuilt}
         </p>
       </section>
 
       {/* Architecture Breakdown */}
       <section className="space-y-4 text-left">
-        <h2 className="text-2xl font-heading font-bold text-foreground flex items-center gap-2.5">
-          <Layers className="w-5 h-5 text-accent" /> System Architecture & Mechanics
+        <div className="flex items-center gap-2">
+          <span className="text-amber-500 font-bold text-xs select-none">—</span>
+          <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+            SYSTEM DESIGN
+          </span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white flex items-center gap-2.5">
+          <Layers className="w-5 h-5 text-amber-500" /> System Architecture & Mechanics
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {project.architecture.map((layer, idx) => (
@@ -146,10 +161,10 @@ export default function ProjectDetailPage() {
               key={idx}
               className="craft-card rounded-2xl p-5 border border-white/10 space-y-2.5"
             >
-              <span className="text-xs font-mono text-accent font-semibold block">
+              <span className="text-xs font-mono text-amber-400 font-semibold block">
                 0{idx + 1}. {layer.layer}
               </span>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 {layer.description}
               </p>
             </div>
@@ -159,8 +174,14 @@ export default function ProjectDetailPage() {
 
       {/* Engineering Challenges */}
       <section className="space-y-4 text-left">
-        <h2 className="text-2xl font-heading font-bold text-foreground flex items-center gap-2.5">
-          <AlertCircle className="w-5 h-5 text-primary" /> Engineering Hurdles & Solutions
+        <div className="flex items-center gap-2">
+          <span className="text-amber-500 font-bold text-xs select-none">—</span>
+          <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+            RESILIENCE & PROBLEM SOLVING
+          </span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white flex items-center gap-2.5">
+          <AlertCircle className="w-5 h-5 text-amber-500" /> Engineering Hurdles & Solutions
         </h2>
         <div className="space-y-4">
           {project.challenges.map((item, idx) => (
@@ -168,17 +189,17 @@ export default function ProjectDetailPage() {
               key={idx}
               className="craft-card rounded-2xl p-6 border border-white/10 space-y-3"
             >
-              <h3 className="text-base font-heading font-bold text-foreground">
+              <h3 className="text-base font-serif font-bold text-white">
                 {item.title}
               </h3>
               <div className="space-y-2 text-xs leading-relaxed">
                 <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive-foreground">
-                  <span className="font-semibold text-destructive block mb-0.5">The Problem:</span>
-                  <span className="text-muted-foreground">{item.challenge}</span>
+                  <span className="font-semibold text-rose-400 block mb-0.5">The Problem:</span>
+                  <span className="text-slate-300">{item.challenge}</span>
                 </div>
                 <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-200">
                   <span className="font-semibold text-emerald-400 block mb-0.5">The Solution:</span>
-                  <span className="text-muted-foreground">{item.solution}</span>
+                  <span className="text-slate-300">{item.solution}</span>
                 </div>
               </div>
             </div>
@@ -186,15 +207,22 @@ export default function ProjectDetailPage() {
         </div>
       </section>
 
+
       {/* Key Takeaways */}
       <section className="craft-card rounded-2xl p-6 sm:p-8 border border-white/10 space-y-4 text-left">
-        <h2 className="text-xl font-heading font-bold text-foreground flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Key Takeaways
+        <div className="flex items-center gap-2">
+          <span className="text-amber-500 font-bold text-xs select-none">—</span>
+          <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+            INSIGHTS
+          </span>
+        </div>
+        <h2 className="text-xl sm:text-2xl font-serif font-bold text-white flex items-center gap-2">
+          <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Key Engineering Takeaways
         </h2>
-        <ul className="space-y-2 text-xs text-muted-foreground">
+        <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
           {project.highlights.map((highlight, idx) => (
             <li key={idx} className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0" />
               <span>{highlight}</span>
             </li>
           ))}

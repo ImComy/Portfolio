@@ -13,10 +13,10 @@ export default function Footer() {
         {/* Left branding */}
         <div className="space-y-3 max-w-sm">
           <div className="flex items-center gap-2">
-            <span className="font-heading font-bold text-lg text-foreground">
+            <span className="font-serif font-bold text-lg text-white">
               Ahmed El-Shazly
             </span>
-            <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+            <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
               @ImComy
             </span>
           </div>

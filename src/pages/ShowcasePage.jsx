@@ -43,13 +43,16 @@ export default function ShowcasePage() {
     <div className="space-y-16 max-w-6xl mx-auto pb-16 text-left">
       {/* Page Header */}
       <section className="space-y-4 pt-6 border-b border-white/10 pb-8">
-        <span className="badge-pill text-xs font-mono text-primary">
-          <Sparkles className="w-3.5 h-3.5" /> Built Works & Accreditations
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-heading font-bold text-foreground tracking-tight">
-          Showcase
+        <div className="flex items-center gap-2">
+          <span className="text-amber-500 font-bold text-sm select-none">—</span>
+          <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+            BUILT WORKS & ACCREDITATIONS
+          </span>
+        </div>
+        <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight">
+          Showcase & Projects
         </h1>
-        <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
+        <p className="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
           An indexed record of production software projects, interactive engineering systems, and validated professional certifications.
         </p>
       </section>
@@ -59,14 +62,15 @@ export default function ShowcasePage() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/10 pb-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="badge-pill text-xs font-mono text-primary">
-                <Code2 className="w-3.5 h-3.5" /> Systems & Builds
+              <span className="text-amber-500 font-bold text-xs select-none">—</span>
+              <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+                SYSTEMS & BUILDS
               </span>
-              <span className="text-xs font-mono text-muted-foreground px-2 py-0.5 rounded bg-white/5">
+              <span className="text-xs font-mono text-slate-400 px-2 py-0.5 rounded bg-white/5">
                 {filteredProjects.length} Total
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
               Software Projects
             </h2>
           </div>
@@ -77,10 +81,10 @@ export default function ShowcasePage() {
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
-                className={`px-3 py-1 rounded-xl text-xs font-mono transition-all ${
+                className={`px-3 py-1 rounded-xl text-xs font-mono transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-primary text-primary-foreground font-semibold shadow-sm'
-                    : 'bg-white/5 hover:bg-white/10 text-muted-foreground hover:text-foreground border border-white/5'
+                    ? 'bg-amber-500 text-slate-950 font-semibold shadow-sm'
+                    : 'bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white border border-white/5'
                 }`}
               >
                 {cat}

@@ -19,6 +19,8 @@ module.exports = {
 			fontFamily: {
 				sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
 				heading: ['"Space Grotesk"', '"Plus Jakarta Sans"', 'sans-serif'],
+				serif: ['"Fraunces"', '"Playfair Display"', 'Georgia', 'serif'],
+				quote: ['"Newsreader"', '"Fraunces"', 'Georgia', 'serif'],
 				mono: ['"JetBrains Mono"', 'monospace'],
 			},
 			colors: {

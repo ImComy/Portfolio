@@ -93,7 +93,7 @@ export default function PlayableTTT() {
 
     // Smart bot check: win if possible, block opponent, or take center/random
     let chosenIndex = null;
-    
+
     // Check if bot can win on next move
     for (const spot of available) {
       const testBoard = [...currentBoard];
@@ -163,19 +163,22 @@ export default function PlayableTTT() {
     <div className="craft-card rounded-2xl p-6 sm:p-8 max-w-md mx-auto text-center border border-white/10 shadow-2xl relative overflow-hidden">
       {/* Decorative tag */}
       <div className="flex items-center justify-between mb-6">
-        <span className="badge-pill text-xs font-mono text-primary bg-primary/10 border-primary/20">
-          <Sparkles className="w-3.5 h-3.5" /> Interactive Playable Demo
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span className="text-amber-500 font-bold text-xs select-none">—</span>
+          <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+            PLAYABLE WORKSHOP
+          </span>
+        </div>
         <button
           onClick={() => setVsBot(!vsBot)}
-          className="text-xs font-mono text-muted-foreground hover:text-foreground flex items-center gap-1.5 transition-colors py-1 px-2 rounded-lg bg-white/5 hover:bg-white/10"
+          className="text-xs font-mono text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors py-1 px-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 cursor-pointer"
         >
-          {vsBot ? <Bot className="w-3.5 h-3.5 text-primary" /> : <User className="w-3.5 h-3.5 text-accent" />}
+          {vsBot ? <Bot className="w-3.5 h-3.5 text-amber-500" /> : <User className="w-3.5 h-3.5 text-emerald-400" />}
           Mode: {vsBot ? 'vs Computer' : 'Pass & Play'}
         </button>
       </div>
 
-      <h4 className="text-xl font-heading font-bold text-foreground mb-1">
+      <h4 className="text-xl font-serif font-bold text-white mb-1">
         Try The 3-Piece Rule Live
       </h4>
       <p className="text-xs text-muted-foreground mb-5">
@@ -213,13 +216,12 @@ export default function PlayableTTT() {
               key={idx}
               onClick={() => handleCellClick(idx)}
               disabled={!!cell || !!winner}
-              className={`relative rounded-xl font-heading font-bold text-3xl sm:text-4xl flex items-center justify-center transition-all duration-200 border ${
-                cell
+              className={`relative rounded-xl font-heading font-bold text-3xl sm:text-4xl flex items-center justify-center transition-all duration-200 border ${cell
                   ? cell === 'X'
                     ? 'bg-primary/10 border-primary/30 text-primary'
                     : 'bg-accent/10 border-accent/30 text-accent'
                   : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
-              } ${isFading ? 'ring-2 ring-destructive ring-offset-2 ring-offset-background animate-pulse' : ''}`}
+                } ${isFading ? 'ring-2 ring-destructive ring-offset-2 ring-offset-background animate-pulse' : ''}`}
             >
               {cell}
               {isFading && (

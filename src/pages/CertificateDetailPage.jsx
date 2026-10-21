@@ -36,23 +36,26 @@ export default function CertificateDetailPage() {
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 border-b border-white/10 pb-6">
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="badge-pill text-xs font-mono text-primary">
-                <Award className="w-3.5 h-3.5" /> {cert.category}
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-amber-500 font-bold text-xs select-none">—</span>
+                <span className="text-xs font-mono font-semibold tracking-wider text-amber-500 uppercase">
+                  {cert.category}
+                </span>
+              </div>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 <ShieldCheck className="w-3.5 h-3.5" /> {cert.status}
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl font-heading font-bold text-foreground">
+            <h1 className="text-2xl sm:text-4xl font-serif font-bold text-white">
               {cert.title}
             </h1>
 
-            <p className="text-sm font-medium text-foreground/80 flex items-center gap-2">
-              <Building className="w-4 h-4 text-primary" />
+            <p className="text-sm font-medium text-slate-300 flex items-center gap-2">
+              <Building className="w-4 h-4 text-amber-500" />
               <span>{cert.issuer}</span>
               <span>•</span>
-              <span className="text-muted-foreground flex items-center gap-1 text-xs">
+              <span className="text-slate-400 flex items-center gap-1 text-xs">
                 <Calendar className="w-3.5 h-3.5" /> {cert.issueDate}
               </span>
             </p>

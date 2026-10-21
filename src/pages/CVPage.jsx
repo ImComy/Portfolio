@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Download, Printer, ExternalLink, Github, Linkedin, Mail, MapPin, CheckCircle, GraduationCap, Code2, Briefcase } from 'lucide-react';
 import { profile } from '../data/profile';
 import { projects } from '../data/projects';
+import { experiences } from '../data/experience';
 
 export default function CVPage() {
   const [viewMode, setViewMode] = useState('standard'); // 'standard' | 'deep'
@@ -73,13 +74,13 @@ export default function CVPage() {
         {/* CV Header */}
         <header className="border-b border-white/10 print:border-black/20 pb-8 flex flex-col sm:flex-row sm:items-start justify-between gap-6">
           <div className="space-y-2">
-            <h1 className="text-3xl sm:text-4xl font-heading font-bold text-foreground print:text-black">
+            <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white print:text-black">
               {profile.name}
             </h1>
-            <p className="text-sm font-mono text-primary print:text-neutral-700 font-semibold">
+            <p className="text-sm font-mono text-amber-500 print:text-neutral-700 font-semibold">
               Software Engineer • Computer Science Student
             </p>
-            <p className="text-xs text-muted-foreground print:text-neutral-600 max-w-xl leading-relaxed">
+            <p className="text-xs text-slate-300 print:text-neutral-600 max-w-xl leading-relaxed">
               {profile.bioShort}
             </p>
           </div>
@@ -132,6 +133,55 @@ export default function CVPage() {
                 <span className="text-xs font-mono text-muted-foreground print:text-neutral-600 shrink-0">
                   {edu.period}
                 </span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Experience & Engineering Practice */}
+        <section className="space-y-4">
+          <h2 className="text-xs font-mono uppercase tracking-widest text-amber-500 print:text-black font-bold flex items-center gap-2">
+            <Briefcase className="w-4 h-4" /> Experience & Engineering Practice
+          </h2>
+          <div className="space-y-5">
+            {experiences.map((exp) => (
+              <div key={exp.id} className="space-y-2">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1">
+                  <div>
+                    <h3 className="text-sm font-serif font-bold text-white print:text-black">
+                      {exp.role}
+                    </h3>
+                    <p className="text-xs font-medium text-slate-300 print:text-neutral-800">
+                      {exp.organization} • <span className="text-amber-400 font-mono text-[11px]">{exp.type}</span>
+                    </p>
+                  </div>
+                  <span className="text-xs font-mono text-slate-400 print:text-neutral-600 shrink-0">
+                    {exp.period}
+                  </span>
+                </div>
+
+                <p className="text-xs text-slate-300 print:text-neutral-700 leading-relaxed max-w-2xl">
+                  {exp.summary}
+                </p>
+
+                <ul className="space-y-1 text-xs text-slate-400 print:text-neutral-700 list-disc list-inside">
+                  {exp.howIWorked.slice(0, 2).map((item, idx) => (
+                    <li key={idx} className="leading-relaxed">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {exp.skills.map((s) => (
+                    <span
+                      key={s}
+                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/5 print:bg-neutral-100 print:text-neutral-800 text-slate-400 border border-white/5 print:border-neutral-200"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
